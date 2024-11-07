@@ -69,6 +69,7 @@ class Schematic:
 
     def get_contained_numbers(self) -> list[SchematicNumber]:
         part_numbers = list()
+        # This is the grosses part. Should just have detect digit -> walk right to not digit or end -> append -> go from there
         for row_idx, row in enumerate(self.grid):
             start = None
             for col_idx, char in enumerate(row):
@@ -143,9 +144,6 @@ class Schematic:
 
 def get_part_positions(schematic: Schematic) -> dict[RowCol, SchematicNumber]:
     part_numbers = [number for number in schematic.get_contained_numbers() if schematic.is_part_number(number)]
-    # l = list([RowCol(part.start.row, part.start.col + offset) for part in part_numbers for offset in range(part.span)])
-    # s = set([RowCol(part.start.row, part.start.col + offset) for part in part_numbers for offset in range(part.span)])
-    # assert len(l) == len(s)
     return {RowCol(part.start.row, part.start.col + offset): part
             for part in part_numbers for offset in range(part.span)}
 
