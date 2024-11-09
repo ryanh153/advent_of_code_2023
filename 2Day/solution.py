@@ -1,7 +1,9 @@
 import operator
 import re
+from collections import defaultdict
 from dataclasses import dataclass
 from enum import Enum
+from functools import reduce
 from itertools import accumulate
 from typing import Self
 
@@ -58,7 +60,7 @@ class Game:
 
     @property
     def power(self) -> int:
-        return list(accumulate((self.max_of_color(color) for color in Color), operator.mul))[-1]
+        return reduce(operator.mul, (self.max_of_color(color) for color in Color), 1)
 
 
 def part_one(file: str) -> int:
@@ -73,8 +75,8 @@ def part_two(file: str) -> int:
 
 
 def main():
-    input_type = 'real'
-    print(f'First: {part_one(f'first_{input_type}_input.txt')}')
+    input_type = 'sample'
+    # print(f'First: {part_one(f'first_{input_type}_input.txt')}')
     print(f'Second: {part_two(f'first_{input_type}_input.txt')}')
 
 
