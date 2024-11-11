@@ -10,6 +10,7 @@ def main() -> None:
     input_type = 'sample'
     print(f'First: {part_one(f'first_{input_type}_input.txt')}')
     print(f'Second: {part_two(f'first_{input_type}_input.txt')}')
+    print(f'Run time {(perf_counter() - start) * 1e3:,.2} ms')
 
 
 if __name__ == '__main__':

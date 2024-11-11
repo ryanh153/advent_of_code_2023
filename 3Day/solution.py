@@ -11,7 +11,6 @@ def is_digit(char: str) -> bool:
 def is_symbol(char: str) -> bool:
     return char not in '.0123456789'
 
-
 @dataclass(frozen=True)
 class RowCol:
     row: int
@@ -163,7 +162,7 @@ def part_two(file: str):
 
 
 def main() -> None:
-    input_type = 'real'
+    input_type = 'sample'
     print(f'First: {part_one(f'first_{input_type}_input.txt')}')
     print(f'Second: {part_two(f'first_{input_type}_input.txt')}')
 
